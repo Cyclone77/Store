@@ -23,7 +23,7 @@
                 }
             },
             get: function (key) {
-                window[this.type].getItem(key);
+                return window[this.type].getItem(key);
             },
             /*
             *   删除指定key值
