@@ -13,6 +13,7 @@
             *   @val {String} 值
             */
             set: function (key, val) {
+                if (Object.prototype.toString.call(val) != "[object String]") throw "缓存保存值必须是字符串！";
                 //各浏览器支持的 localStorage 和 sessionStorage 容量上限不同。
                 //如果达到上限则删除第一个键重新保存
                 try {
