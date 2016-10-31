@@ -3,7 +3,10 @@
     var ensure = function (obj, name, factory) {
         return obj[name] || (obj[name] = factory());
     };
-
+    /*
+    *   创建Storage对象
+    *   typespace { string } 缓存类型
+    */
     var createStorage = function (typespace) {
         var StorageInstance = {
             type: (!!typespace ? typespace : "session") + "Storage", //local本地存储，session会话存储
@@ -23,8 +26,19 @@
                     this.set(key, val);
                 }
             },
+            /*
+            *   获取键的值
+            *   @key { string } 键名称
+            */
             get: function (key) {
                 return window[this.type].getItem(key);
+            },
+            /*
+            *   获取第n个键的值
+            *   index { int } 位置
+            */
+            key: function(index){
+                return window[this.type].key(index);
             },
             /*
             *   删除指定key值
